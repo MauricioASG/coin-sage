@@ -1,5 +1,5 @@
 //UsuariosController.js
-const UsuariosModel = require('../models/usuarios'); // Ajustar el nombre del modelo si es diferente
+const UsuariosModel = require('../models/usuarios'); 
 
 class UsuariosController {
     static async indexGet(req, res){
