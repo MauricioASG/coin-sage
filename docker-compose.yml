@@ -1,0 +1,25 @@
+version: "0"
+services:
+  web-service:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 3050:80
+    command: ["npx","nodemon", "app.js", "-L"]
+  mysql:
+      image: mysql:8.0.35
+      volumes:
+      - mysql-data:/var/lib/mysql
+      expose:
+      - 3306
+      ports:
+      - 3307:3306
+      environment:
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_DATABASE=coinsage
+      - MYSQL_USER=user_coinsage
+      - MYSQL_PASSWORD=12345
+volumes:
+  mysql-data:
