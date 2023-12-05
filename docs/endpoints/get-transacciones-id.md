@@ -1,13 +1,13 @@
 # Endpoint: `GET /usuarios/{usuarioid}/transacciones`
 
-Permite obtener la información sobre el usuario con ese {usuarioId}.
+Permite obtener las transacciones del usuario con ese {usuarioId}.
 
 ## Parámetros de URL
 - `{usuarioId}` (obligatorio): Identificador único del usuario del cual se desean recuperar la información.
 
 ## Ejemplo de Solicitud
 ```http
-GET /usuarios/1
+GET /usuarios/1/transacciones
 ```
 
 ## Respuesta Exitosa (Código 200 OK)
@@ -19,13 +19,6 @@ GET /usuarios/1
     "monto": 250.00,
     "tipo": "Ingreso",
     "fecha": "2023-12-01T12:30:45Z"
-  },
-  {
-    "id": 2,
-    "usuario_id": 1,
-    "monto": 35.50,
-    "tipo": "Gasto",
-    "fecha": "2023-12-03T09:15:00Z"
   }
 ]
 ```

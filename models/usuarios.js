@@ -19,6 +19,12 @@ class UsuariosModel {
             throw new Error(`Error al consultar usuario por ID: ${error.message}`);
         }
     }
+
+    static async insertar(datos) {
+        let db = await connectMysql();
+        const result = await db('Usuario').insert(datos).returning('id');
+        return result[0];
+    }
 }
 
 module.exports = UsuariosModel;

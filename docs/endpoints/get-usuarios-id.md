@@ -4,8 +4,8 @@
 Endpoint para obtener detalles del usuario según su id.
 
 - **Método HTTP:** GET
-- **URL:** /usuarios
-- **Descripción:** Retorna una lista de todos los usuarios registrados.
+- **URL:** /usuarios/1
+- **Descripción:** Retorna el usuarios registrado con ese {usuarioId}.
 
 ### Parámetros
 - `{usuarioId}` (obligatorio): Identificador único del usuario del cual se desean recuperar la información.

@@ -18,6 +18,9 @@ app.get('/', function (req, res) {
 app.get('/usuarios', UsuariosController.indexGet);
 app.get('/usuarios/:id', UsuariosController.itemGet);
 
+app.post('/usuarios', UsuariosController.indexPost);
+
+
 // Rutas para transacciones
 app.get('/usuarios/:usuarioId/transacciones', TransaccionesController.transaccionesPorUsuarioIdGet);
 app.get('/usuarios/:usuarioId/transacciones/:transaccionId', TransaccionesController.transaccionPorIdGet);
