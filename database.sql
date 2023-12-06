@@ -6,7 +6,7 @@ CREATE TABLE Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    contraseña VARCHAR(100) NOT NULL,
+    passw VARCHAR(100) NOT NULL,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -40,7 +40,7 @@ CREATE TABLE Tarjetas (
 );
 
 -- Inserciones en la tabla Usuario
-INSERT INTO Usuario (nombre, email, contraseña) 
+INSERT INTO Usuario (nombre, email, passw)
 VALUES ('Ana García', 'ana@example.com', 'pass123'),
        ('Pedro López', 'pedro@example.com', 'securePwd'),
        ('María Ramirez', 'maria@example.com', 'password123'),

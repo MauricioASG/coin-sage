@@ -33,6 +33,32 @@ Ninguno.
     ...
   ]
 
+
+# Endpoint: `GET /usuarios/{usuarioid}`
+## Obtener Todos los Usuarios
+
+Endpoint para obtener detalles del usuario según su id.
+
+- **Método HTTP:** GET
+- **URL:** /usuarios/1
+- **Descripción:** Retorna el usuarios registrado con ese {usuarioId}.
+
+### Parámetros
+- `{usuarioId}` (obligatorio): Identificador único del usuario del cual se desean recuperar la información.
+
+### Respuestas
+- **Código 200 OK:** Se encontraron usuarios.
+  ```json
+  [
+    {
+      "id": 1,
+      "nombre": "Nombre Usuario 1",
+      "email": "usuario1@example.com",
+      "contraseña": "contraseñaEncriptada",
+      "fecha_registro": "2023-12-01T12:00:00Z"
+    }
+  ]
+
 ## Respuestas de Errores Posibles
 - Código 404 Not Found: No se encontraron usuarios.
 

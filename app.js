@@ -8,6 +8,10 @@ const TarjetasController = require('./controllers/TarjetasController');
 const app = express();
 const puerto = 80;
 
+// Middleware para procesar JSON
+app.use(express.json());
+
+
 app.get('/', function (req, res) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
@@ -17,8 +21,9 @@ app.get('/', function (req, res) {
 // Rutas para usuarios
 app.get('/usuarios', UsuariosController.indexGet);
 app.get('/usuarios/:id', UsuariosController.itemGet);
-
 app.post('/usuarios', UsuariosController.indexPost);
+app.put('/usuarios/:id', UsuariosController.itemPut);
+app.patch('/usuarios/:id', UsuariosController.itemPatch);
 
 
 // Rutas para transacciones

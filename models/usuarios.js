@@ -1,4 +1,3 @@
-//usuarios.js
 const db = require('../dbconnection');
 
 class UsuariosModel {
@@ -21,9 +20,32 @@ class UsuariosModel {
     }
 
     static async insertar(datos) {
-        let db = await connectMysql();
-        const result = await db('Usuario').insert(datos).returning('id');
-        return result[0];
+        try {
+            const result = await db('Usuario').insert(datos);
+            return result[0]; // Retorna el ID del nuevo usuario insertado
+        } catch (error) {
+            throw new Error(`Error al insertar usuario: ${error.message}`);
+        }
+    }
+    
+    static async actualizar(id, campos) {
+        try {
+            const result = await db('Usuario').where('id', id).update(campos);
+            return result; // Retorna la cantidad de registros actualizados
+        } catch (error) {
+            throw new Error(`Error al actualizar usuario: ${error.message}`);
+        }
+    }
+
+    static async reemplazar(id, newData) {
+        try {
+            newData['id'] = id;
+            await db('Usuario').where('id', id).del();
+            await db('Usuario').insert(newData);
+            return id;
+        } catch (error) {
+            throw new Error(`Error al reemplazar usuario: ${error.message}`);
+        }
     }
 }
 
