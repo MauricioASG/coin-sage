@@ -5,7 +5,7 @@ Endpoint para obtener todos los usuarios.
 
 - **Método HTTP:** GET
 - **URL:** /usuarios
-- **Descripción:** Retorna una lista de todos los usuarios registrados.
+- **Descripción:** Retorna una lista de todos los usuarios registrados o uno en especifico según su id.
 
 ### Parámetros
 

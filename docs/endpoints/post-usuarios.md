@@ -1,28 +1,41 @@
  
-# Endpoint: `Post /usuarios`
-## Crear nuevo Usuario
-
-Endpoint para crear nuevos usuarios.
+# Endpoint: `POST /usuarios`
+## Crear un Nuevo Usuario
 
 - **Método HTTP:** POST
 - **URL:** /usuarios
-- **Descripción:** Retorna una lista de todos los usuarios registrados.
+- **Descripción:** Endpoint para crear un nuevo usuario.
 
 ### Parámetros
+ "nombre": "Nombre del Usuario",
+  "email": "correo@example.com",
+  "passw": "contraseña"
 
-Ninguno.
-
-### Respuestas
- /
- Recibe una petición para crear un recurso:
+### Ejemplo de uso
   
 ```http
 [
-{"nombre":"Nuevo tema"
+POST /usuarios
+Content-Type: application/json
 
+{
+    "nombre": "Nombre del Usuario",
+    "email": "correo@example.com",
+    "passw": "contraseña"
 }
 ]
  ```
+
+## Respuesta de confirmación
+
+- Código 201 indica que se ha creado un recurso de acuerdo con la solicitud POST.
+
+  ```json
+  {
+    "status": 201,
+    "message": "Created"
+  }
+  ```
 
 
 ## Respuestas de Errores Posibles
@@ -36,5 +49,4 @@ Ninguno.
   ```
 
 ## Notas Adicionales
-- Asegurate de incluir un ID válido en la solicitud para obtener la información
-  sobre un usuario en específico.
+- Asegurate de incluir datos que sean validos en nombre, email y passw (contraseña)
