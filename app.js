@@ -35,6 +35,10 @@ app.get('/usuarios/:usuarioId/categorias', CategoriasController.listarCategorias
 
 // Rutas para las tarjetas por ID de usuario
 app.get('/usuarios/:usuarioId/tarjetas', TarjetasController.consultarPorUsuarioId);
+app.post('/usuarios/:usuarioId/tarjetas', TarjetasController.crearTarjeta);
+app.put('/tarjetas/:id', TarjetasController.actualizarTarjeta);
+app.delete('/tarjetas/:id', TarjetasController.eliminarTarjeta);
+
 
 app.listen(puerto, function () {
     console.log('Servidor ejecutándose en el puerto ' + puerto + '');
