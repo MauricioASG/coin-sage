@@ -2,6 +2,7 @@
 const UsuariosModel = require('../models/usuarios');
 
 class UsuariosController {
+    
     static async indexGet(req, res) {
         try {
             const data = await UsuariosModel.consultar();

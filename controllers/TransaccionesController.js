@@ -2,45 +2,44 @@
 const TransaccionesModel = require('../models/transacciones');
 
 class TransaccionesController {
-    static async transaccionesPorUsuarioIdGet(req, res) {
-        try {
-            const usuarioId = req.params.usuarioId;
-            const transacciones = await TransaccionesModel.consultarTransaccionesPorUsuarioId(usuarioId);
 
-            if (transacciones.length === 0) {
-                res.status(404).json({
-                    error: 'not_found',
-                    error_description: 'No se encontraron transacciones para el usuario.'
-                });
-            } else {
-                res.status(200).json(transacciones);
-            }
+
+    static async indexGet(req, res) {
+        try {
+            const data = await TransaccionesModel.consultar();
+            res.send(data);
         } catch (error) {
-            res.status(500).json({
-                error: 'internal_error',
-                error_description: 'Ocurrió un problema al consultar las transacciones del usuario.'
-            });
+            console.error(error);
+            res.status(500).send({ errno: 500, error: 'Internal Server Error' });
         }
     }
 
-    static async transaccionPorIdGet(req, res) {
+    static async itemGet(req, res) {
         try {
-            const transaccionId = req.params.transaccionId;
-            const transaccion = await TransaccionesModel.consultarTransaccionPorId(transaccionId);
-
-            if (!transaccion) {
-                res.status(404).json({
-                    error: 'not_found',
-                    error_description: 'No se encontró la transacción.'
-                });
-            } else {
-                res.status(200).json(transaccion);
+            const id = req.params.id;
+            const data = await TransaccionesModel.consultarTransaccionPorId(id);
+            if (data.length === 0) {
+                res.status(404).send({ errno: 404, error: 'Not found' });
+                return;
             }
+            res.send(data[0]);
         } catch (error) {
-            res.status(500).json({
-                error: 'internal_error',
-                error_description: 'Ocurrió un problema al consultar la transacción.'
-            });
+            console.error(error);
+            res.status(500).send({ errno: 500, error: 'Internal Server Error' });
+        }
+    }
+
+
+    static async indexPost(req, res) {
+        try {
+            const newData = req.body;
+            const insertedId = await TransaccionesModel.insertar(newData);
+            res.status(201)
+                .header('Location', `/transacciones/${insertedId}`)
+                .send({ status: 201, message: 'Created' });
+        } catch (error) {
+            console.error(error);
+            res.status(400).send({ errno: 400, error: 'Bad Request' });
         }
     }
 }

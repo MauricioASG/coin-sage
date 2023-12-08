@@ -22,7 +22,9 @@ A continuación, se presenta una lista de endpoints disponibles con enlaces a su
 ## Transacciones
 | Recurso                    | Descripción |
 | -------------------------- | ----------- |
-| [`GET /usuarios/{usuarioid}/transacciones`](./endpoints//get-transacciones-id.md)   | Detalles sobre transacciones de un usuario |
+| [`GET /transacciones`](./endpoints//get-transacciones.md)   | Permite obtener todas las transacciones registradas |
+| [`POST /transacciones`](./endpoints//post-transacciones.md)   | Registrar transacciones de usuarios |
+
 
 ## Categorias de gastos
 | Recurso                    | Descripción |

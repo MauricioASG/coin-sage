@@ -25,8 +25,10 @@ app.put('/usuarios/:id', UsuariosController.itemPut);
 app.patch('/usuarios/:id', UsuariosController.itemPatch);
 
 // Rutas para transacciones
-app.get('/usuarios/:usuarioId/transacciones', TransaccionesController.transaccionesPorUsuarioIdGet);
-app.get('/usuarios/:usuarioId/transacciones/:transaccionId', TransaccionesController.transaccionPorIdGet);
+app.get('/transacciones', TransaccionesController.indexGet);
+app.get('/transacciones/:id', TransaccionesController.itemGet);
+app.post('/transacciones', TransaccionesController.indexPost);
+
 
 // Rutas para categorias
 app.get('/usuarios/:usuarioId/categorias', CategoriasController.listarCategoriasPorUsuario);
