@@ -1,3 +1,4 @@
+//UsuariosContoller.js
 const UsuariosModel = require('../models/usuarios');
 
 class UsuariosController {
