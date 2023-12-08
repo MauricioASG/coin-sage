@@ -1,18 +1,15 @@
 
-### Crear Tarjeta para Usuario
-**Descripción:** Crea una nueva tarjeta asociada a un usuario específico.
-- Método: POST
-- Ruta: `/usuarios/:usuarioId/tarjetas`
-- Parámetros de Ruta: `:usuarioId` - Identificador único del usuario (entero)
-- Cuerpo de la solicitud: Datos de la nueva tarjeta a crear
-- Respuesta Exitosa:
-  - Código de estado: 201 Created
-  - Cuerpo de la respuesta: Mensaje de éxito y ID de la nueva tarjeta creada
+# Endpoint: `POST /tarjetas`
+## Crear Tarjeta 
 
-### Ejemplo de uso
+- **Método HTTP:** POST
+- **URL:** /tarjetas
+- **Descripción:** Crea una nueva tarjeta 
+  
+## Ejemplo de uso
   ```json
   [
-    POST /usuarios/123/tarjetas
+    POST /tarjetas
     Content-Type: application/json
     {
         "tipo": "Crédito",
@@ -45,4 +42,4 @@
   ```
 
 ## Notas Adicionales
-- Asegurate de incluir datos que sean validos para que funcione
+- Asegurate de incluir datos que sean validos.

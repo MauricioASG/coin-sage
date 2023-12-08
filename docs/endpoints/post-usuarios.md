@@ -12,18 +12,15 @@
   "passw": "contraseña"
 
 ### Ejemplo de uso
-  
-```http
-[
 POST /usuarios
 Content-Type: application/json
 
+```json
 {
     "nombre": "Nombre del Usuario",
     "email": "correo@example.com",
     "passw": "contraseña"
 }
-]
  ```
 
 ## Respuesta de confirmación
