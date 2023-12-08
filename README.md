@@ -1,5 +1,5 @@
 # API para proyecto final
-El presente repositoro muestra la base de una posible implementación de un servicio web para el desarrollo
+El presente repositorio muestra la base de una posible implementación de un servicio web para el desarrollo
  de mi proyecto de la especialidad.
 
 ## Tabla de contenido
