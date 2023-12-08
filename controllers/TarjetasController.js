@@ -1,22 +1,27 @@
 const TarjetasModel = require('../models/tarjetas');
 
 class TarjetasController {
-    static async crearTarjeta(req, res) {
-        try {
-            const datos = req.body;
-            const nuevaTarjetaId = await TarjetasModel.crearTarjeta(datos);
 
-            res.status(201).json({
-                status: 201,
-                message: "Tarjeta creada con éxito",
-                nuevaTarjetaId
-            });
+    static async indexGet(req, res) {
+        try {
+            const data = await TarjetasModel.consultar();
+            res.send(data);
         } catch (error) {
-            res.status(500).json({
-                errno: 500,
-                error: "internal_error",
-                error_description: "Ocurrió un problema al crear la tarjeta."
-            });
+            console.error(error);
+            res.status(500).send({ errno: 500, error: 'Internal Server Error' });
+        }
+    }
+
+    static async indexPost(req, res) {
+        try {
+            const newData = req.body;
+            const insertedId = await TarjetasModel.crearTarjeta(newData);
+            res.status(201)
+                .header('Location', `/tarjetas/${insertedId}`)
+                .send({ status: 201, message: 'Created' });
+        } catch (error) {
+            console.error(error);
+            res.status(400).send({ errno: 400, error: 'Bad Request' });
         }
     }
 

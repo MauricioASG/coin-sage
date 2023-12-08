@@ -32,8 +32,9 @@ app.get('/usuarios/:usuarioId/transacciones/:transaccionId', TransaccionesContro
 app.get('/usuarios/:usuarioId/categorias', CategoriasController.listarCategoriasPorUsuario);
 
 // Rutas para las tarjetas por ID de usuario
-//app.get('/usuarios/:usuarioId/tarjetas', TarjetasController.consultarPorUsuarioId);
-app.post('/usuarios/:usuarioId/tarjetas', TarjetasController.crearTarjeta);
+app.get('/tarjetas', TarjetasController.indexGet); //Mostrar todas las tarjetas de usuarios
+app.post('/tarjetas', TarjetasController.indexPost); //Agregagar tarjeta de usuarios
+//app.post('/usuarios/:usuarioId/tarjetas', TarjetasController.crearTarjeta);
 app.put('/tarjetas/:id', TarjetasController.actualizarTarjeta);
 app.delete('/tarjetas/:id', TarjetasController.eliminarTarjeta);
 

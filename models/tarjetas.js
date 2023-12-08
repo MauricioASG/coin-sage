@@ -1,6 +1,16 @@
 const db = require('../dbconnection');
 
 class TarjetasModel {
+
+    static async consultar() {
+        try {
+            const tarjetas = await db.select('*').from('Tarjetas');
+            return tarjetas;
+        } catch (error) {
+            throw new Error(`Error al consultar tarjetas: ${error.message}`);
+        }
+    }
+
     static async consultarPorUsuarioId(usuarioId) {
         try {
             const tarjetas = await db.select('*').from('Tarjetas').where('usuario_id', usuarioId);

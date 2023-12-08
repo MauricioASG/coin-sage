@@ -14,9 +14,9 @@ A continuación, se presenta una lista de endpoints disponibles con enlaces a su
 ## Tarjetas
 | Recurso                    | Descripción |
 | -------------------------- | ----------- |
-| [`GET /usuarios/{usuarioId}/tarjetas`](./endpoints//get-tajetas-usuario-id.md)   | Obtener las tarjetas asociadas a un usuario|
-| [`Endpoints /usuarios/tarjetas`](./endpoints//Endpoints-tarjetas.md)| Metodos POST, PATCH y PUT sobre tarjetas de usuarios|
-
+| [`GET /tarjetas`](./endpoints//get-tajetas.md)   | Obtener las tarjetas registradas|
+| [`POST /tarjetas`](./endpoints//post-tajetas.md)   | Agregar una nueva tarjeta|
+| [`Endpoints /usuarios/tarjetas`](./endpoints//Endpoints-tarjetas.md)| PATCH y PUT sobre tarjetas de usuarios|
 
 
 ## Transacciones
