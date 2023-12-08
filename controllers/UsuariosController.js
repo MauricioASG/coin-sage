@@ -57,6 +57,7 @@ class UsuariosController {
         }
     }
 
+
     static async itemPatch(req, res) {
         try {
             const id = req.params.id;
@@ -72,6 +73,7 @@ class UsuariosController {
             res.status(400).send({ errno: 400, error: 'Bad Request' });
         }
     }
+
 }
 
 module.exports = UsuariosController;

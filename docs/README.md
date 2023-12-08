@@ -1,4 +1,4 @@
-# Documentación de la API para sage-coin
+# Documentación detallada
 
 Bienvenido a la documentación de la API para mi proyecto "coin-sage". 
 A continuación, se presenta una lista de endpoints disponibles con enlaces a sus respectivas documentaciones detalladas.
@@ -16,7 +16,8 @@ A continuación, se presenta una lista de endpoints disponibles con enlaces a su
 | -------------------------- | ----------- |
 | [`GET /tarjetas`](./endpoints//get-tajetas.md)   | Obtener las tarjetas registradas|
 | [`POST /tarjetas`](./endpoints//post-tarjetas.md)   | Agregar una nueva tarjeta|
-| [`Endpoints /usuarios/tarjetas`](./endpoints//Endpoints-tarjetas.md)| PATCH y PUT sobre tarjetas de usuarios|
+| [`PUT /tarjetas/:id`](./endpoints//put-tarjetas.md)| Actualizar sobre tarjetas de usuarios|
+| [`DELETE /tarjetas/:id`](./endpoints//del-tarjetas.md)| Borrar tarjetas de usuarios|
 
 
 ## Transacciones
@@ -29,4 +30,5 @@ A continuación, se presenta una lista de endpoints disponibles con enlaces a su
 ## Categorias de gastos
 | Recurso                    | Descripción |
 | -------------------------- | ----------- |
-| [`GET /usuarios/{usuarioId}/categorias`](./endpoints//get-categorias-usuario-id.md)   | Obtener las categorías de los movimientos de un usuario|
+| [`GET /categorias`](./endpoints//get-categorias.md)   | Obtener las categorías de gastos de los usuario|
+| [`POST /categorias`](./endpoints//post-categorias.md)   | Registrar una categorias de gastos o ingresos |

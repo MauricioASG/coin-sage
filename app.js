@@ -21,7 +21,7 @@ app.get('/', function (req, res) {
 app.get('/usuarios', UsuariosController.indexGet);
 app.get('/usuarios/:id', UsuariosController.itemGet);
 app.post('/usuarios', UsuariosController.indexPost);
-app.put('/usuarios/:id', UsuariosController.itemPut);
+app.put('/usuarios/:id', UsuariosController.itemPut); //Actualizar
 app.patch('/usuarios/:id', UsuariosController.itemPatch);
 
 // Rutas para transacciones
@@ -31,12 +31,13 @@ app.post('/transacciones', TransaccionesController.indexPost);
 
 
 // Rutas para categorias
-app.get('/usuarios/:usuarioId/categorias', CategoriasController.listarCategoriasPorUsuario);
+app.get('/categorias', CategoriasController.indexGet);
+app.post('/categorias', CategoriasController.indexPost);
+
 
 // Rutas para las tarjetas por ID de usuario
-app.get('/tarjetas', TarjetasController.indexGet); //Mostrar todas las tarjetas de usuarios
-app.post('/tarjetas', TarjetasController.indexPost); //Agregagar tarjeta de usuarios
-//app.post('/usuarios/:usuarioId/tarjetas', TarjetasController.crearTarjeta);
+app.get('/tarjetas', TarjetasController.indexGet); 
+app.post('/tarjetas', TarjetasController.indexPost); 
 app.put('/tarjetas/:id', TarjetasController.actualizarTarjeta);
 app.delete('/tarjetas/:id', TarjetasController.eliminarTarjeta);
 
