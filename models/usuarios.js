@@ -1,3 +1,4 @@
+//usuarios.js
 const db = require('../dbconnection');
 
 class UsuariosModel {
@@ -16,6 +17,15 @@ class UsuariosModel {
             return usuario;
         } catch (error) {
             throw new Error(`Error al consultar usuario por ID: ${error.message}`);
+        }
+    }
+
+    static async consultarPorEmail(email) {
+        try {
+            const usuario = await db.select('*').from('Usuario').where('email', email);
+            return usuario;
+        } catch (error) {
+            throw new Error(`Error al consultar usuario por email: ${error.message}`);
         }
     }
 

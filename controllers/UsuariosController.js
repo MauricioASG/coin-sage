@@ -1,8 +1,6 @@
-//UsuariosContoller.js
 const UsuariosModel = require('../models/usuarios');
 
 class UsuariosController {
-    
     static async indexGet(req, res) {
         try {
             const data = await UsuariosModel.consultar();
@@ -57,7 +55,6 @@ class UsuariosController {
         }
     }
 
-
     static async itemPatch(req, res) {
         try {
             const id = req.params.id;
@@ -74,6 +71,21 @@ class UsuariosController {
         }
     }
 
+    static async login(req, res) {
+        const { email, password } = req.body;
+        console.log('Login request received:', { email, password }); // Log para depuración
+        try {
+            const usuarios = await UsuariosModel.consultarPorEmail(email);
+            console.log('User found:', usuarios); // Log para depuración
+            if (usuarios.length === 0 || usuarios[0].passw !== password) {
+                return res.status(401).send({ message: 'Credenciales inválidas. Inténtalo de nuevo.' });
+            }
+            res.status(200).send({ message: 'Inicio de sesión exitoso', user: usuarios[0] });
+        } catch (error) {
+            console.error('Error during login:', error);
+            res.status(500).send({ message: 'Error interno del servidor' });
+        }
+    }
 }
 
 module.exports = UsuariosController;

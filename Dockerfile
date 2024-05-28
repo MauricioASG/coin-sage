@@ -1,17 +1,20 @@
-# Utilizar la ultima imagen de node
+# Usa una imagen base de Node.js
 FROM node:lts
 
-# Crear directorio de trabajo
+# Establece el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copiar el contenido del proyecto a /app
-COPY ./package*.json /app/
-# Instalar dependencias
+# Copia el package.json y package-lock.json al directorio de trabajo
+COPY package*.json ./
+
+# Instala las dependencias del proyecto
 RUN npm install
 
-COPY . /app/
-# Exponer el puerto 90
-EXPOSE 90
+# Copia el resto de los archivos de la aplicación al directorio de trabajo
+COPY . .
 
-# Instalar aplicacion 
+# Expone el puerto en el que la aplicación correrá
+EXPOSE 3050
+
+# Comando para iniciar la aplicación
 CMD ["node", "app.js"]
