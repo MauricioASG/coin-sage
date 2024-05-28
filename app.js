@@ -28,6 +28,7 @@ app.post('/usuarios', UsuariosController.indexPost);
 app.put('/usuarios/:id', UsuariosController.itemPut); // Actualizar
 app.patch('/usuarios/:id', UsuariosController.itemPatch);
 app.post('/login', UsuariosController.login); // Agrega la ruta de login
+app.post('/crear-cuenta', UsuariosController.crearCuenta); // Nueva ruta para crear cuenta
 
 // Rutas para transacciones
 app.get('/transacciones', TransaccionesController.indexGet);

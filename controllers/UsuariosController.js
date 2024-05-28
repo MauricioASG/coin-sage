@@ -86,6 +86,19 @@ class UsuariosController {
             res.status(500).send({ message: 'Error interno del servidor' });
         }
     }
+    
+    static async crearCuenta(req, res) {
+        try {
+            const { nombre, email, passw } = req.body;
+            const newUser = { nombre, email, passw };
+            const insertedId = await UsuariosModel.insertar(newUser);
+            const usuario = await UsuariosModel.consultarPorId(insertedId);
+            res.status(201).send({ message: 'Cuenta creada exitosamente', user: usuario[0] });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({ error: 'Error al crear la cuenta' });
+        }
+    }
 }
 
 module.exports = UsuariosController;
