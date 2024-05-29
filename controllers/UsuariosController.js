@@ -89,8 +89,8 @@ class UsuariosController {
 
     static async registrarSalario(req, res) {
         try {
-          const { id } = req.params;
           const { salario } = req.body;
+          const { id } = req.params;
           await UsuariosModel.actualizar(id, { salario });
           res.status(200).send({ message: 'Salario registrado exitosamente' });
         } catch (error) {
@@ -98,18 +98,15 @@ class UsuariosController {
         }
       }
     
-    static async crearCuenta(req, res) {
+      static async crearCuenta(req, res) {
         try {
-            const { nombre, email, passw } = req.body;
-            const newUser = { nombre, email, passw };
-            const insertedId = await UsuariosModel.insertar(newUser);
-            const usuario = await UsuariosModel.consultarPorId(insertedId);
-            res.status(201).send({ message: 'Cuenta creada exitosamente', user: usuario[0] });
+          const { nombre, email, passw } = req.body;
+          const newUser = await UsuariosModel.insertar({ nombre, email, passw });
+          res.status(201).send({ user: newUser });
         } catch (error) {
-            console.error(error);
-            res.status(500).send({ error: 'Error al crear la cuenta' });
+          res.status(500).send({ error: 'Error al crear la cuenta' });
         }
-    }
+      }
 }
 
 

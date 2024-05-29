@@ -45,13 +45,14 @@ class TransaccionesController {
 
     static async agregarGasto(req, res) {
         try {
-            const { usuario_id, categoria_id, monto } = req.body;
-            await TransaccionesModel.insertar({ usuario_id, categoria_id, monto, tipo: 'Gasto' });
-            res.status(201).send({ message: 'Gasto registrado exitosamente' });
+          const { usuario_id, categoria_id, monto } = req.body;
+          await TransaccionesModel.insertar({ usuario_id, categoria_id, monto, tipo: 'Gasto' });
+          res.status(200).send({ message: 'Gasto registrado exitosamente' });
         } catch (error) {
-            res.status(500).send({ error: 'Error al registrar el gasto' });
+          console.error('Error al registrar el gasto:', error);
+          res.status(500).send({ error: 'Error al registrar el gasto' });
         }
-    }
+      }
 }
 
 module.exports = TransaccionesController;

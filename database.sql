@@ -12,21 +12,23 @@ CREATE TABLE Usuario (
     salario DECIMAL(10, 2) DEFAULT 0
 );
 
-CREATE TABLE Transacciones (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT,
-    monto DECIMAL(10, 2) NOT NULL,
-    tipo ENUM('Ingreso', 'Gasto') NOT NULL,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
-);
-
 CREATE TABLE Categorias (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
     nombre VARCHAR(50) NOT NULL,
     descripcion VARCHAR(255),
     FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+);
+
+CREATE TABLE Transacciones (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT,
+  categoria_id INT,
+  monto DECIMAL(10, 2) NOT NULL,
+  tipo ENUM('Ingreso', 'Gasto') NOT NULL,
+  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (usuario_id) REFERENCES Usuario(id),
+  FOREIGN KEY (categoria_id) REFERENCES Categorias(id)
 );
 
 CREATE TABLE Tarjetas (
@@ -46,14 +48,6 @@ VALUES ('Ana García', 'ana@example.com', 'pass123'),
        ('María Ramirez', 'maria@example.com', 'password123'),
        ('Carlos Martínez', 'carlos@example.com', 'mypass123'),
        ('Laura Pérez', 'laura@example.com', 'pwdLaura45');
-
--- Inserciones en la tabla Transacciones
-INSERT INTO Transacciones (usuario_id, monto, tipo) 
-VALUES (1, 50.00, 'Gasto'),
-       (2, 100.00, 'Ingreso'),
-       (3, 75.50, 'Gasto'),
-       (4, 120.00, 'Ingreso'),
-       (5, 30.25, 'Gasto');
 
 -- Inserciones en la tabla Categorias
 INSERT INTO Categorias (usuario_id, nombre, descripcion) 

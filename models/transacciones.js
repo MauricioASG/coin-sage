@@ -22,13 +22,12 @@ class TransaccionesModel {
 
     static async insertar(datos) {
         try {
-            const result = await db('Transacciones').insert(datos);
-            return result[0]; // Retorna el ID del nuevo usuario insertado
+          const result = await db('Transacciones').insert(datos);
+          return result[0]; // Retorna el ID de la nueva transacción insertada
         } catch (error) {
-            throw new Error(`Error al insertar Transaccion: ${error.message}`);
+          throw new Error(`Error al insertar transacción: ${error.message}`);
         }
-    }
-
+      }
 }
 
 module.exports = TransaccionesModel;
