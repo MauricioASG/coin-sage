@@ -1,13 +1,15 @@
+DROP DATABASE IF EXISTS coinsage;
 CREATE DATABASE coinsage;
 
-use coinsage;
+USE coinsage;
 
 CREATE TABLE Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     passw VARCHAR(100) NOT NULL,
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    salario DECIMAL(10, 2) DEFAULT 0
 );
 
 CREATE TABLE Transacciones (
@@ -19,7 +21,6 @@ CREATE TABLE Transacciones (
     FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
 );
 
-
 CREATE TABLE Categorias (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
@@ -27,7 +28,6 @@ CREATE TABLE Categorias (
     descripcion VARCHAR(255),
     FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
 );
-
 
 CREATE TABLE Tarjetas (
     id INT AUTO_INCREMENT PRIMARY KEY,

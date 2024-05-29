@@ -42,6 +42,16 @@ class TransaccionesController {
             res.status(400).send({ errno: 400, error: 'Bad Request' });
         }
     }
+
+    static async agregarGasto(req, res) {
+        try {
+            const { usuario_id, categoria_id, monto } = req.body;
+            await TransaccionesModel.insertar({ usuario_id, categoria_id, monto, tipo: 'Gasto' });
+            res.status(201).send({ message: 'Gasto registrado exitosamente' });
+        } catch (error) {
+            res.status(500).send({ error: 'Error al registrar el gasto' });
+        }
+    }
 }
 
 module.exports = TransaccionesController;

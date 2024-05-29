@@ -86,6 +86,17 @@ class UsuariosController {
             res.status(500).send({ message: 'Error interno del servidor' });
         }
     }
+
+    static async registrarSalario(req, res) {
+        try {
+          const { id } = req.params;
+          const { salario } = req.body;
+          await UsuariosModel.actualizar(id, { salario });
+          res.status(200).send({ message: 'Salario registrado exitosamente' });
+        } catch (error) {
+          res.status(500).send({ error: 'Error al registrar el salario' });
+        }
+      }
     
     static async crearCuenta(req, res) {
         try {
@@ -100,5 +111,6 @@ class UsuariosController {
         }
     }
 }
+
 
 module.exports = UsuariosController;

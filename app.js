@@ -1,24 +1,22 @@
 const express = require('express');
-const cors = require('cors'); // Importa cors
+const cors = require('cors');
 
-// rutas de los controladores
+// Rutas de los controladores
 const UsuariosController = require('./controllers/UsuariosController');
 const TransaccionesController = require('./controllers/TransaccionesController');
 const CategoriasController = require('./controllers/CategoriasController');
 const TarjetasController = require('./controllers/TarjetasController');
 
 const app = express();
-const puerto = 3050; // Asegúrate de que el puerto esté correctamente configurado
+const puerto = 3050;
 
 // Middleware para permitir CORS
 app.use(cors());
 
 app.use(express.json());
 
-app.get('/', function (req, res) {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('SiConfirmacion :3');
+app.get('/', (req, res) => {
+    res.status(200).send('SiConfirmacion :3');
 });
 
 // Rutas para usuarios
@@ -27,16 +25,18 @@ app.get('/usuarios/:id', UsuariosController.itemGet);
 app.post('/usuarios', UsuariosController.indexPost);
 app.put('/usuarios/:id', UsuariosController.itemPut); // Actualizar
 app.patch('/usuarios/:id', UsuariosController.itemPatch);
-app.post('/login', UsuariosController.login); // Agrega la ruta de login
-app.post('/crear-cuenta', UsuariosController.crearCuenta); // Nueva ruta para crear cuenta
+app.post('/usuarios/:id/salario', UsuariosController.registrarSalario);
+app.post('/login', UsuariosController.login); // Ruta de login
+app.post('/crear-cuenta', UsuariosController.crearCuenta); // Ruta para crear cuenta
 
 // Rutas para transacciones
 app.get('/transacciones', TransaccionesController.indexGet);
 app.get('/transacciones/:id', TransaccionesController.itemGet);
 app.post('/transacciones', TransaccionesController.indexPost);
+app.post('/transacciones/gasto', TransaccionesController.agregarGasto);
 
-// Rutas para categorias
-app.get('/categorias', CategoriasController.indexGet);
+// Rutas para categorías
+app.get('/categorias', CategoriasController.getCategorias);
 app.post('/categorias', CategoriasController.indexPost);
 
 // Rutas para las tarjetas por ID de usuario
@@ -45,6 +45,6 @@ app.post('/tarjetas', TarjetasController.indexPost);
 app.put('/tarjetas/:id', TarjetasController.actualizarTarjeta);
 app.delete('/tarjetas/:id', TarjetasController.eliminarTarjeta);
 
-app.listen(puerto, function () {
+app.listen(puerto, () => {
     console.log(`Servidor ejecutándose en el puerto ${puerto}`);
 });
