@@ -1,4 +1,4 @@
-//usuarios.js
+// models/usuarios.js
 const db = require('../dbconnection');
 
 class UsuariosModel {

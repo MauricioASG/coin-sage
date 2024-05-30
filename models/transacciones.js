@@ -1,3 +1,4 @@
+// /models/transacciones.js
 const db = require('../dbconnection');
 
 class TransaccionesModel {

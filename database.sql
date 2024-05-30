@@ -1,3 +1,4 @@
+-- database.sql
 DROP DATABASE IF EXISTS coinsage;
 CREATE DATABASE coinsage;
 

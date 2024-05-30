@@ -1,3 +1,4 @@
+// /models/categorias.js
 const db = require('../dbconnection');
 
 class CategoriasModel {

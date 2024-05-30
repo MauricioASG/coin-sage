@@ -1,5 +1,5 @@
+// /controlles/UsuariosControlle.js
 const UsuariosModel = require('../models/usuarios');
-
 class UsuariosController {
     static async indexGet(req, res) {
         try {

@@ -1,3 +1,4 @@
+//  /controlles/TarjetasController.js
 const CategoriasModel = require('../models/categorias');
 
 class CategoriasController {

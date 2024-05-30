@@ -1,3 +1,4 @@
+// /models/tarjetas.js
 const db = require('../dbconnection');
 
 class TarjetasModel {
