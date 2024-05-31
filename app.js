@@ -23,9 +23,13 @@ app.get('/usuarios/:id', UsuariosController.itemGet);
 app.post('/usuarios', UsuariosController.indexPost);
 app.put('/usuarios/:id', UsuariosController.itemPut);
 app.patch('/usuarios/:id', UsuariosController.itemPatch);
-app.post('/usuarios/:id/salario', UsuariosController.registrarSalario);
 app.post('/login', UsuariosController.login);
 app.post('/crear-cuenta', UsuariosController.crearCuenta);
+
+//Para registrar salario del usuario
+app.post('/usuarios/:id/salario', UsuariosController.registrarSalario);
+// Ruta para obtener el salario del usuario
+app.get('/usuarios/:id/salario', UsuariosController.obtenerSalario);
 
 // Rutas para transacciones
 app.get('/transacciones', TransaccionesController.indexGet);

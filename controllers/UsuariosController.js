@@ -107,6 +107,22 @@ class UsuariosController {
           res.status(500).send({ error: 'Error al crear la cuenta' });
         }
       }
+
+      static async obtenerSalario(req, res) {
+        try {
+          const { id } = req.params;
+          const usuario = await UsuariosModel.consultarPorId(id);
+          if (usuario.length === 0) {
+            res.status(404).send({ error: 'Usuario no encontrado' });
+            return;
+          }
+          res.send({ salario: usuario[0].salario });
+        } catch (error) {
+          console.error('Error al obtener el salario del usuario:', error);
+          res.status(500).send({ error: 'Error interno del servidor' });
+        }
+      }
+      
 }
 
 
