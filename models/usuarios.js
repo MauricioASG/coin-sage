@@ -40,12 +40,12 @@ class UsuariosModel {
     
     static async actualizar(id, campos) {
         try {
-            const result = await db('Usuario').where('id', id).update(campos);
-            return result; // Retorna la cantidad de registros actualizados
+          const result = await db('Usuario').where('id', id).update(campos);
+          return result; // Retorna la cantidad de registros actualizados
         } catch (error) {
-            throw new Error(`Error al actualizar usuario: ${error.message}`);
+          throw new Error(`Error al actualizar usuario: ${error.message}`);
         }
-    }
+      }
 
     static async reemplazar(id, newData) {
         try {
