@@ -1,4 +1,3 @@
--- database.sql
 DROP DATABASE IF EXISTS coinsage;
 CREATE DATABASE coinsage;
 
@@ -65,3 +64,7 @@ VALUES (1, 'Crédito', 'Ana García', '1234567812345678', '2025-06-01'),
        (3, 'Crédito', 'María Ramirez', '5678123456781234', '2026-11-01'),
        (4, 'Débito', 'Carlos Martínez', '4321876543218765', '2023-04-01'),
        (5, 'Crédito', 'Laura Pérez', '9876543298765432', '2027-02-01');
+
+--Cambiar la categoria salario por otros
+USE coinsage;
+UPDATE Categorias SET nombre = 'Otros' WHERE nombre = 'Salario';

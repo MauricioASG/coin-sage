@@ -91,12 +91,16 @@ class UsuariosController {
         try {
           const { salario } = req.body;
           const { id } = req.params;
+          const usuario = await UsuariosModel.consultarPorId(id);
+          if (usuario[0].salario && parseFloat(usuario[0].salario) > 0) {
+            return res.status(400).send({ message: 'El salario ya ha sido registrado' });
+          }
           await UsuariosModel.actualizar(id, { salario });
           res.status(200).send({ message: 'Salario registrado exitosamente' });
         } catch (error) {
           res.status(500).send({ error: 'Error al registrar el salario' });
         }
-      }
+    }
     
       static async crearCuenta(req, res) {
         try {
